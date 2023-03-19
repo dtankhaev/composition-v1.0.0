@@ -88,10 +88,13 @@ jobs:
             # #остановка всех контейнеров
             # sudo docker stop $(sudo docker ps -a -q)
             # sudo docker run --rm -d -p 5000:5000 dtankhaev/workflow_infra_actions
-            sudo docker-compose down -v
+            # sudo docker-compose down -v
+            # sudo docker-compose up -d
+            # sudo docker-compose exec web python manage.py migrate
+            # sudo docker-compose exec web python manage.py collectstatic --no-input
+            sudo docker-compose stop
+            sudo docker-compose rm web
             sudo docker-compose up -d
-            sudo docker-compose exec web python manage.py migrate
-            sudo docker-compose exec web python manage.py collectstatic --no-input
   # send_message:
   #   name: Отправка отчета
   #   runs-on: ubuntu-latest
