@@ -1,1 +1,10 @@
+name: CI for api_yamdb_ci_cd_final project
 
+on: [push]
+
+jobs:
+  tests:
+    runs_on: ubuntu
+  build:
+  deploy:
+  send_message:
