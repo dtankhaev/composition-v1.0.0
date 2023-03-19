@@ -66,8 +66,9 @@ jobs:
         # Пуш образа в Docker Hub
         uses: docker/build-push-action@v2
         with:
+          context: ./api_yamdb/
           push: true
-          tags: dtankhaev/yamdb_final_ci_cd:v1.03.19
+          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final_ci_cd:v1.03.19
 
   # deploy:
   #   name: Деплой и запуск контейнера на боевом сервере
