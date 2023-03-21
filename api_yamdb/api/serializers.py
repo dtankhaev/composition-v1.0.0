@@ -108,8 +108,7 @@ class CreateTitleSerializer(serializers.ModelSerializer):
         """Валидатор для поля year.
         Год выпуска не может быть больше текущего.
         """
-        year = dt.date.today().year
-        if (year < value):
+        if (dt.date.today().year < value):
             raise serializers.ValidationError('Год выпуска не может быть '
                                               'больше текущего.')
         return value

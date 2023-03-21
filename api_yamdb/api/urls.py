@@ -19,11 +19,11 @@ router.register(
 )
 router.register('users', UserViewSet, basename='users')
 registration = [
-    path('auth/signup/', signup_post),
-    path('auth/token/', TokenViewAPI.as_view())
+    path('signup/', signup_post),
+    path('token/', TokenViewAPI.as_view())
 ]
 
 urlpatterns = [
     path('v1/', include(router.urls)),
-    path('v1/', include(registration))
+    path('v1/auth/', include(registration))
 ]
