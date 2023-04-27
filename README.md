@@ -1,60 +1,60 @@
 # yamdb_final
 ![yamdb_workflow](https://github.com/dtankhaev/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-REST API проект для сервиса YaMDb — сбор отзывов о фильмах, книгах или музыке.
+REST API project for the YaMDb service — collecting reviews of movies, books or music.
 
-## Описание
+## Description
 
-Проект YaMDb собирает отзывы пользователей на произведения.
-Произведения делятся на категории: «Книги», «Фильмы», «Музыка».
-Список категорий может быть расширен (например, можно добавить категорию «Изобразительное искусство» или «Ювелирка»).
+The YaMDb project collects user reviews of works.
+The works are divided into categories: "Books", "Films", "Music".
+The list of categories can be expanded (for example, you can add the category "Fine Art" or "Jewelry").
 
-### Как запустить проект:
+### How to launch a project:
 
-Все описанное ниже относится к ОС Linux.
-Клонируем репозиторий и переходим в него:
+Everything described below applies to Linux OS.
+Clone the repository and go to it:
 
 ```bash
 git clone git@github.com:dtankhaev/yamdb_final.git
 ```
 
-Переходим в папку с файлом docker-compose.yaml:
+Go to the folder with the docker-compose file.yaml:
 
 ```bash
 cd infra
 ```
 
-Поднимаем контейнеры (infra_db_1, infra_web_1, infra_nginx_1):
+Lifting containers (infra_db_1, infra_web_1, infra_nginx_1):
 
 ```bash
 docker-compose up -d --build
 ```
 
-Выполняем миграции:
+Performing migrations:
 
 ```bash
 docker-compose exec web python manage.py migrate
 ```
 
-Создаем суперпользователя:
+Creating a superuser:
 
 ```bash
 docker-compose exec web python manage.py createsuperuser
 ```
 
-Србираем статику:
+Removing the static:
 
 ```bash
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-Останавливаем контейнеры:
+Stopping containers:
 
 ```bash
 docker-compose down -v
 ```
 
-### Шаблон наполнения .env (не включен в текущий репозиторий) расположенный по пути infra/.env
+### Filling template .env (not included in the current repository) located at the path infra/.env
 
 ```
 DB_ENGINE=django.db.backends.postgresql
@@ -66,25 +66,25 @@ DB_PORT=5432
 SECRET_KEY=key
 ```
 
-### Документация API YaMDb
+### YaMDb API Documentation
 
-Документация доступна по эндпойнту: http://localhost/redoc/
+Documentation is available at the endpoint: http://localhost/redoc/
 
-### Пользовательские роли
+### User roles
 
-- **Аноним** — может просматривать описания произведений, читать отзывы
-  и комментарии.
-- **Аутентифицированный пользователь (user)** — может читать всё, как и Аноним,
-  может публиковать отзывы и ставить оценки произведениям, может комментировать
-  отзывы; может редактировать и удалять свои отзывы и комментарии, редактировать
-  свои оценки произведений. Эта роль присваивается по умолчанию каждому новому
-  пользователю.
-- **Модератор (moderator)** — те же права, что и у Аутентифицированного
-  пользователя, плюс право удалять и редактировать любые отзывы и комментарии.
-- **Администратор (admin)** — полные права на управление всем контентом
-  проекта. Может создавать и удалять произведения, категории и жанры.
-  Может назначать роли пользователям.
-- **Суперюзер Django** должен всегда обладать правами администратора,
-  пользователя с правами admin. Даже если изменить пользовательскую роль
-  суперюзера — это не лишит его прав администратора. Суперюзер — всегда
-  администратор, но администратор — не обязательно суперюзер.
+- **Anonymous** — can view descriptions of works, read reviews
+and comments.
+- **Authenticated user (user)** — can read everything, as well as Anonymous,
+can publish reviews and rate works, can comment
+reviews; can edit and delete their reviews and comments, edit
+their ratings of works. This role is assigned by default to each new
+user.
+- **Moderator (moderator)** — the same rights as the Authenticated
+the user, plus the right to delete and edit any reviews and comments.
+- **Administrator (admin)** — full rights to manage all content
+the project. Can create and delete works, categories and genres.
+Can assign roles to users.
+- **Django Superuser** must always have administrator rights,
+a user with admin rights. Even if you change the user role
+of the superuser, it will not deprive him of administrator rights. Superuser — always
+an administrator, but an administrator is not necessarily a superuser.
