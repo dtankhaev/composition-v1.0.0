@@ -1,11 +1,11 @@
-# yamdb_final
-![yamdb_workflow](https://github.com/dtankhaev/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+# composition-v1.0.0
+![yamdb_workflow](https://github.com/dtankhaev/composition-v1.0.0/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-REST API project for the YaMDb service — collecting reviews of movies, books or music.
+composition-v1.0.0 project for the  service — collecting reviews of movies, books or music.
 
 ## Description
 
-The YaMDb project collects user reviews of works.
+The composition-v1.0.0 project collects user reviews of works.
 The works are divided into categories: "Books", "Films", "Music".
 The list of categories can be expanded (for example, you can add the category "Fine Art" or "Jewelry").
 
@@ -15,7 +15,7 @@ Everything described below applies to Linux OS.
 Clone the repository and go to it:
 
 ```bash
-git clone git@github.com:dtankhaev/yamdb_final.git
+git clone git@github.com:dtankhaev/composition-v1.0.0.git
 ```
 
 Go to the folder with the docker-compose file.yaml:
